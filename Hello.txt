@@ -7,15 +7,20 @@ ${GOOGLE URL}     http://www.google.co.th
 
 
 *** Testcases ***
-ทดสอบการค้นหา "Robot" ใน Google
-	ค้นหาคำว่า                    Robot
-	รายการผลลัพธ์มีคำว่า          Robot
-
-ทดสอบการค้นหา "Robot Framework" ใน Google
-	ค้นหาคำว่า                    Robot Framework
-	รายการผลลัพธ์มีคำว่า          Robot Framework
+Rule search data from Google
+	[Template]      Flow ของการค้นหาข้อมูล
+	#---------------+-----------------#
+	#   Keywork     | Expected Result #
+	#---------------+-----------------#
+	  robot              robot
+	  robot framework    robot framework
 
 *** Keywords ***
+Flow ของการค้นหาข้อมูล
+	[Arguments]      ${keyword}	     ${expected_result}
+	ค้นหาคำว่า	     ${keyword}
+	รายการผลลัพธ์มีคำว่า           ${expected_result}
+
 ค้นหาคำว่า
 	[Arguments]     ${keyword}
 	Open Browser    ${GOOGLE URL}
